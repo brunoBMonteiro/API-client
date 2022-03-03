@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.EmptyStackException;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -46,13 +45,20 @@ public class ClienteController {
     }
 
     @DeleteMapping(path = "/{id}")
-    public ResponseEntity<Optional<Cliente>> deleteClientById(@PathVariable Long id){
-        try {
-            clienteRepository.deleteById(id);
-            return new ResponseEntity<>(HttpStatus.OK);
-        }catch (NoSuchElementException nsee){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    public ResponseEntity<Void> deleteClientById(@PathVariable Long id) {
+        clienteRepository.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Cliente> update(@PathVariable Long id, @RequestBody Cliente clienteUpdated){
+        return clienteRepository.findById(id)
+                .map(cliente -> {
+                    cliente.setNome(clienteUpdated.getNome());
+                    cliente.setEndereco(clienteUpdated.getEndereco());
+                    Cliente clientUpdated = clienteRepository.save(clienteUpdated);
+                    return ResponseEntity.ok().body(clientUpdated);
+                }).orElse(ResponseEntity.notFound().build());
     }
 
 }

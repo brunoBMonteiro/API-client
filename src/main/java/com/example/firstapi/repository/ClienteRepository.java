@@ -11,4 +11,5 @@ import java.util.Optional;
 // Spring crud repository forne uma implementação em tempo de execução, essa implementação com varios métodos
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {
+
 }
