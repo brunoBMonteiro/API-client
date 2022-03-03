@@ -2,42 +2,57 @@ package com.example.firstapi.controller;
 
 import com.example.firstapi.model.Cliente;
 import com.example.firstapi.repository.ClienteRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.EmptyStackException;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/clientes")
 public class ClienteController {
+    
+    private final ClienteRepository clienteRepository;
+    
+    public ClienteController(ClienteRepository clienteRepository){
+        this.clienteRepository = clienteRepository;
+    }
 
-    @Autowired
-    private ClienteRepository clienteRepository;
+
+    @PostMapping
+    public ResponseEntity<Cliente> save(@RequestBody Cliente cliente){
+        return new ResponseEntity<>(clienteRepository.save(cliente), HttpStatus.CREATED);
+    }
 
     @GetMapping
-    public List<Cliente> listar(){
-        return clienteRepository.findAll();
+    public ResponseEntity<List<Cliente>> listAllClients(){
+        List<Cliente> clientes;
+        clientes = clienteRepository.findAll();
+        return new ResponseEntity<>(clientes, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public Cliente buscaUsuarioId(@PathVariable Long id){
-        Optional<Cliente> cliente = clienteRepository.findById(id);
-        if(cliente.isEmpty()){
-            throw new EmptyStackException();
+    public ResponseEntity<Optional<Cliente>> getClientById(@PathVariable Long id){
+        Optional<Cliente> getClientById;
+        try {
+            getClientById = clienteRepository.findById(id);
+            return new ResponseEntity<>(getClientById, HttpStatus.OK);
+        }catch (NoSuchElementException nsee){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return cliente.get();
     }
 
-    // requestBody indica que o corpo da requisição vai ser convertido para o objeto java do tipo cliente
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public Cliente adicionar(@RequestBody Cliente cliente){
-        return clienteRepository.save(cliente);
+    @DeleteMapping(path = "/{id}")
+    public ResponseEntity<Optional<Cliente>> deleteClientById(@PathVariable Long id){
+        try {
+            clienteRepository.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }catch (NoSuchElementException nsee){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
-
-
 
 }
