@@ -2,6 +2,7 @@ package com.example.firstapi.controller;
 
 import com.example.firstapi.model.Cliente;
 import com.example.firstapi.repository.ClienteRepository;
+import lombok.Data;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,16 +10,12 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
+@Data
 @RestController
 @RequestMapping("/clientes")
 public class ClienteController {
 
     private final ClienteRepository clienteRepository;
-
-    public ClienteController(ClienteRepository clienteRepository){
-        this.clienteRepository = clienteRepository;
-    }
-
 
     @PostMapping
     public ResponseEntity<Cliente> save(@RequestBody Cliente cliente){
@@ -53,11 +50,10 @@ public class ClienteController {
     public ResponseEntity<Cliente> update(@PathVariable Long id, @RequestBody Cliente clienteUpdated){
         return clienteRepository.findById(id)
                 .map(cliente -> {
-                    cliente.setNome(clienteUpdated.getNome());
-                    cliente.setEndereco(clienteUpdated.getEndereco());
                     Cliente clientUpdated = clienteRepository.save(clienteUpdated);
                     return ResponseEntity.ok().body(clientUpdated);
                 }).orElse(ResponseEntity.notFound().build());
     }
+
 
 }
