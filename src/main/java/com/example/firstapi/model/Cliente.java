@@ -1,10 +1,16 @@
 package com.example.firstapi.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
 public class Cliente {
 
@@ -16,6 +22,5 @@ public class Cliente {
     private String cpf;
     private int idade;
     private String endereco;
-
 
 }
