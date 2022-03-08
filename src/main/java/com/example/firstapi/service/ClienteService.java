@@ -4,7 +4,6 @@ import com.example.firstapi.model.Cliente;
 import com.example.firstapi.repository.ClienteRepository;
 import com.example.firstapi.requests.ClientePostRequestBody;
 import com.example.firstapi.requests.ClientePutRequestBody;
-import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -28,7 +27,12 @@ public class ClienteService {
     }
 
     public Cliente save(ClientePostRequestBody clientePostRequestBody){
-        return clienteRepository.save(Cliente.builder().nome(clientePostRequestBody.getNome()).build());
+        return clienteRepository.save(Cliente.builder()
+                .nome(clientePostRequestBody.getNome())
+                        .cpf(clientePostRequestBody.getCpf())
+                        .idade(clientePostRequestBody.getIdade())
+                        .endereco(clientePostRequestBody.getEndereco())
+                .build());
     }
 
     public void delete(long id){
