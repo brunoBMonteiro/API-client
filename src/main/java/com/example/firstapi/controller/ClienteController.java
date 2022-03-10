@@ -9,6 +9,7 @@ import lombok.Data;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @Data
@@ -18,7 +19,7 @@ public class ClienteController {
 
     private final ClienteRepository clienteRepository;
     private final ClienteService clienteService;
-    private Cliente cliente;
+
 
     @GetMapping
     public ResponseEntity<List<Cliente>> listAllClients(){
@@ -44,7 +45,7 @@ public class ClienteController {
     @PutMapping(value = "/{id}")
     public ResponseEntity<Void> replace(@RequestBody ClientePutRequestBody clientePutRequestBody) {
         clienteService.replace(clientePutRequestBody);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 
 }

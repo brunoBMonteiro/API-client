@@ -24,11 +24,21 @@ dependencies {
     implementation 'com.h2database:h2:2.1.210'
     implementation 'mysql:mysql-connector-java:8.0.25'
 
+    //mapstruct
+    implementation 'org.mapstruct:mapstruct:1.4.2.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
+
+
+
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
+}
+
+test {
+    useJUnitPlatform()
 }
 
 tasks.named('test') {

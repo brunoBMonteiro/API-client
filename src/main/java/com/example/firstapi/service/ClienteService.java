@@ -1,5 +1,6 @@
 package com.example.firstapi.service;
 
+import com.example.firstapi.mapper.ClienteMapper;
 import com.example.firstapi.model.Cliente;
 import com.example.firstapi.repository.ClienteRepository;
 import com.example.firstapi.requests.ClientePostRequestBody;
@@ -27,12 +28,17 @@ public class ClienteService {
     }
 
     public Cliente save(ClientePostRequestBody clientePostRequestBody){
+        /*
+        // Exemplo de Builder, forma de instanciar objeto
         return clienteRepository.save(Cliente.builder()
                 .nome(clientePostRequestBody.getNome())
                         .cpf(clientePostRequestBody.getCpf())
                         .idade(clientePostRequestBody.getIdade())
                         .endereco(clientePostRequestBody.getEndereco())
                 .build());
+         */
+        return clienteRepository.save(ClienteMapper.INSTANCE.toCliente(clientePostRequestBody));
+
     }
 
     public void delete(long id){
@@ -41,6 +47,7 @@ public class ClienteService {
 
 
     public void replace(ClientePutRequestBody clientePutRequestBody){
+        // Exemplo de Builder, forma de instanciar objeto
         Cliente savedCliente = findByIdOrThrowBadRequestException(clientePutRequestBody.getId());
         Cliente cliente = Cliente.builder()
                 .id(savedCliente.getId())
