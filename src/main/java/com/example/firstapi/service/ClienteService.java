@@ -1,6 +1,5 @@
 package com.example.firstapi.service;
 
-import com.example.firstapi.mapper.ClienteMapper;
 import com.example.firstapi.model.Cliente;
 import com.example.firstapi.repository.ClienteRepository;
 import com.example.firstapi.requests.ClientePostRequestBody;
@@ -28,7 +27,6 @@ public class ClienteService {
     }
 
     public Cliente save(ClientePostRequestBody clientePostRequestBody){
-        /*
         // Exemplo de Builder, forma de instanciar objeto
         return clienteRepository.save(Cliente.builder()
                 .nome(clientePostRequestBody.getNome())
@@ -36,8 +34,8 @@ public class ClienteService {
                         .idade(clientePostRequestBody.getIdade())
                         .endereco(clientePostRequestBody.getEndereco())
                 .build());
-         */
-        return clienteRepository.save(ClienteMapper.INSTANCE.toCliente(clientePostRequestBody));
+
+        //return clienteRepository.save(ClienteMapper.INSTANCE.toCliente(clientePostRequestBody));
 
     }
 

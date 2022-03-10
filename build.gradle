@@ -28,7 +28,8 @@ dependencies {
     implementation 'org.mapstruct:mapstruct:1.4.2.Final'
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
 
-
+    // Hateoas
+    implementation 'org.springframework.boot:spring-boot-starter-hateoas:2.6.4'
 
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'

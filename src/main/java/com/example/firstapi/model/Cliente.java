@@ -5,14 +5,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
-
+import org.springframework.hateoas.RepresentationModel;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Entity
-public class Cliente {
+public class Cliente extends RepresentationModel<Cliente>{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
