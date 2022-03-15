@@ -1,13 +1,12 @@
 package com.example.firstapi.service;
 
+import com.example.firstapi.exception.BadRequestException;
 import com.example.firstapi.model.Cliente;
 import com.example.firstapi.repository.ClienteRepository;
 import com.example.firstapi.requests.ClientePostRequestBody;
 import com.example.firstapi.requests.ClientePutRequestBody;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -23,7 +22,7 @@ public class ClienteService {
 
     public Cliente findByIdOrThrowBadRequestException(long id){
         return clienteRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cliente não encontrado!"));
+                .orElseThrow(() -> new BadRequestException("Cliente não encontrado!"));
     }
 
     public Cliente save(ClientePostRequestBody clientePostRequestBody){
