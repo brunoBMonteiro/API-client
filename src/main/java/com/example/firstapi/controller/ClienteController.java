@@ -24,7 +24,9 @@ public class ClienteController {
 
 
     @GetMapping
-    public ResponseEntity<List<Cliente>> listAll(){
+    public ResponseEntity<List<Cliente>> listAll() {
+        //return ResponseEntity.ok(clienteService.listAll());
+
         List<Cliente> listClientes = clienteService.listAll();
         if(listClientes.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -36,17 +38,23 @@ public class ClienteController {
             return new ResponseEntity<>(listClientes, HttpStatus.OK);
         }
 
+
     }
 
    @GetMapping(path = "/{id}")
    public ResponseEntity<Cliente> findById(@PathVariable long id){
-       Optional<Cliente> cliente = clienteRepository.findById(id);
+       return ResponseEntity.ok(clienteService.findByIdOrThrowBadRequestException(id));
+
+        /*
+       Optional<Cliente> cliente = clienteService.findByIdOrThrowBadRequestException(id);
        if(cliente.isEmpty()){
            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
        }else{
            cliente.get().add(linkTo(methodOn(ClienteController.class).listAll()).withRel("Lista de clientes"));
            return new ResponseEntity<>(cliente.get(), HttpStatus.OK);
        }
+
+         */
    }
 
 
