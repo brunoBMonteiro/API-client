@@ -45,18 +45,7 @@ public class ClienteController {
    public ResponseEntity<Cliente> findById(@PathVariable long id){
        return ResponseEntity.ok(clienteService.findByIdOrThrowBadRequestException(id));
 
-        /*
-       Optional<Cliente> cliente = clienteService.findByIdOrThrowBadRequestException(id);
-       if(cliente.isEmpty()){
-           return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-       }else{
-           cliente.get().add(linkTo(methodOn(ClienteController.class).listAll()).withRel("Lista de clientes"));
-           return new ResponseEntity<>(cliente.get(), HttpStatus.OK);
-       }
-
-         */
    }
-
 
    @PostMapping
    public ResponseEntity<Cliente> save(@RequestBody ClientePostRequestBody clientePostRequestBody){

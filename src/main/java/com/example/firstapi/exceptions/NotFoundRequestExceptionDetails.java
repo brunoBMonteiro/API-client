@@ -1,4 +1,4 @@
-package com.example.firstapi.exception;
+package com.example.firstapi.exceptions;
 
 
 import lombok.Builder;
@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Builder
-public class BadRequestExceptionDetails {
+public class NotFoundRequestExceptionDetails {
     private String title;
     private int status;
     private String details;

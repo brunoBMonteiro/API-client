@@ -1,6 +1,6 @@
 package com.example.firstapi.service;
 
-import com.example.firstapi.exception.BadRequestException;
+import com.example.firstapi.exceptions.NotFoundRequestException;
 import com.example.firstapi.model.Cliente;
 import com.example.firstapi.repository.ClienteRepository;
 import com.example.firstapi.requests.ClientePostRequestBody;
@@ -22,7 +22,7 @@ public class ClienteService {
 
     public Cliente findByIdOrThrowBadRequestException(long id){
         return clienteRepository.findById(id)
-                .orElseThrow(() -> new BadRequestException("Cliente não encontrado!"));
+                .orElseThrow(() -> new NotFoundRequestException("Cliente não encontrado!"));
     }
 
     public Cliente save(ClientePostRequestBody clientePostRequestBody){
