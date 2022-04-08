@@ -1,25 +1,23 @@
 package com.example.firstapi.controller;
 
 import com.example.firstapi.model.Cliente;
-import com.example.firstapi.repository.ClienteRepository;
 import com.example.firstapi.requests.ClientePostRequestBody;
 import com.example.firstapi.requests.ClientePutRequestBody;
 import com.example.firstapi.service.ClienteService;
-import lombok.Data;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-import java.util.Optional;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
-@Data
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/clientes")
 public class ClienteController {
 
-    private final ClienteRepository clienteRepository;
     private final ClienteService clienteService;
 
 

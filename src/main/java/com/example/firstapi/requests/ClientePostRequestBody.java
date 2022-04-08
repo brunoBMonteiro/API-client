@@ -7,7 +7,6 @@ import lombok.Data;
 // processos de um sistema distribuído ou diferentes sistemas via serialização.
 @Data
 public class ClientePostRequestBody {
-    private Long id;
     private String nome;
     private String cpf;
     private int idade;

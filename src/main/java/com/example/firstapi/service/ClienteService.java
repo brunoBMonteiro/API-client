@@ -7,6 +7,7 @@ import com.example.firstapi.requests.ClientePostRequestBody;
 import com.example.firstapi.requests.ClientePutRequestBody;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -25,6 +26,7 @@ public class ClienteService {
                 .orElseThrow(() -> new NotFoundRequestException("Cliente não encontrado!"));
     }
 
+    @Transactional
     public Cliente save(ClientePostRequestBody clientePostRequestBody){
         // Exemplo de Builder, forma de instanciar objeto
         return clienteRepository.save(Cliente.builder()

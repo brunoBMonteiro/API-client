@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.time.LocalDateTime;
 
+//permite que você use exatamente as mesmas técnicas de tratamento de exceção,
+// mas aplique-as em toda a aplicação, não apenas a um controlador individual
 @ControllerAdvice
 public class RestExceptionHandler {
 
