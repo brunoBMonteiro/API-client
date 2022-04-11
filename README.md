@@ -1,4 +1,4 @@
-<h1>API-client</h1>
+<h1>API Rest client</h1>
 
 API Project with Spring boot and some spring modules Spring web, Spring Dev Tools, Spring Data JPA, H2 database, Lombok, and 
 MapStruct framework, Hateoas, Docker, Swagger...
