@@ -12,3 +12,5 @@ https://medium.com/@raphaelbluteau/spring-boot-swagger-documentando-sua-api-auto
 https://www.youtube.com/watch?v=HX4lheDqoiA
 
 https://swagger.io/
+
+Lib for dependences: https://springdoc.org/
