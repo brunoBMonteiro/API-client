@@ -14,3 +14,7 @@ https://www.youtube.com/watch?v=HX4lheDqoiA
 https://swagger.io/
 
 Lib for dependences: https://springdoc.org/
+
+Link reference to spring docs:
+
+https://www.baeldung.com/spring-rest-docs-vs-openapi
