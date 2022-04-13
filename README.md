@@ -4,6 +4,12 @@ API Project with Spring boot and some spring modules Spring web, Spring Dev Tool
 MapStruct framework, Hateoas, Docker, Swagger...
 
 
+<h2>URL for the Swagger:</h2>
+
+http://localhost:8080/swagger-ui/index.html#/
+
+
+
 <h3>References</h3>
 Links reference to swagger: 
 
