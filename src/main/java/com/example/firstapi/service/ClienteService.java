@@ -27,7 +27,7 @@ public class ClienteService {
     }
 
     //
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public Cliente save(ClientePostRequestBody clientePostRequestBody){
         // Exemplo de Builder, forma de instanciar objeto
         return clienteRepository.save(Cliente.builder()

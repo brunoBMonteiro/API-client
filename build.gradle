@@ -42,6 +42,9 @@ dependencies {
     // DevTools
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
+    // Validation, validação de campos da entidade
+    implementation 'org.springframework.boot:spring-boot-starter-validation:2.6.3'
+
 }
 
 test {

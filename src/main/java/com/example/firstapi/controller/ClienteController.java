@@ -14,6 +14,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 import java.util.List;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
@@ -72,7 +74,7 @@ public class ClienteController {
                     @Content(mediaType = "application/json", schema = @Schema(implementation = Cliente.class))}),
     })
    @PostMapping
-   public ResponseEntity<Cliente> save(@RequestBody ClientePostRequestBody clientePostRequestBody){
+   public ResponseEntity<Cliente> save(@RequestBody @Valid ClientePostRequestBody clientePostRequestBody){
         return new ResponseEntity<>(clienteService.save(clientePostRequestBody), HttpStatus.CREATED);
    }
 
