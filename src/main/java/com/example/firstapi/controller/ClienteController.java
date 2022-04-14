@@ -72,6 +72,7 @@ public class ClienteController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "salvou novo cliente", content = {
                     @Content(mediaType = "application/json", schema = @Schema(implementation = Cliente.class))}),
+            @ApiResponse(responseCode = "400", description = "Campo do cliente em branco", content = @Content)
     })
    @PostMapping
    public ResponseEntity<Cliente> save(@RequestBody @Valid ClientePostRequestBody clientePostRequestBody){
