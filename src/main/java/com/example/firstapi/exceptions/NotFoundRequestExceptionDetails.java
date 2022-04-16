@@ -1,17 +1,11 @@
 package com.example.firstapi.exceptions;
 
+import lombok.Getter;
+import lombok.experimental.SuperBuilder;
 
-import lombok.Builder;
-import lombok.Data;
 
-import java.time.LocalDateTime;
+@Getter
+@SuperBuilder
+public class NotFoundRequestExceptionDetails extends ExceptionDetails{
 
-@Data
-@Builder
-public class NotFoundRequestExceptionDetails {
-    private String title;
-    private int status;
-    private String details;
-    private String developerMessage;
-    private LocalDateTime timestamp;
 }

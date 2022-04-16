@@ -38,8 +38,6 @@ public class ClienteController {
     })
     @GetMapping
     public ResponseEntity<List<Cliente>> listAll() {
-        //return ResponseEntity.ok(clienteService.listAll());
-
         List<Cliente> listClientes = clienteService.listAll();
         if(listClientes.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -50,8 +48,6 @@ public class ClienteController {
             }
             return new ResponseEntity<>(listClientes, HttpStatus.OK);
         }
-
-
     }
 
 
