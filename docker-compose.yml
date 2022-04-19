@@ -10,5 +10,13 @@ services:
     volumes:
       - client_data:/var/lib/mysql
 
+
+  sonarqube:
+      image: sonarqube:lts
+      ports:
+        - 9000:9000
+      environment:
+        - SONAR_FORCEAUTHENTICATION=false
+
 volumes:
   client_data:

@@ -8,6 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 
+import java.util.Optional;
+
+// Spring Data JPA test
+// Teste de validação de banco de dados
+
 @DataJpaTest
 @DisplayName("Teste do cliente Repository")
 class ClienteRepositoryTest {
@@ -16,7 +21,7 @@ class ClienteRepositoryTest {
     private ClienteRepository clienteRepository;
 
     @Test
-    @DisplayName("Salva cliente criado quando der sucesso!")
+    @DisplayName("Salva cliente persistido, quando der sucesso!")
     void save_PersistCliente_WhenSuccessful(){
 
         Cliente clienteToBeSaved = createCliente();
@@ -41,11 +46,21 @@ class ClienteRepositoryTest {
 
         Assertions.assertThat(clienteUpdated).isNotNull();
         Assertions.assertThat(clienteSaved.getNome()).isEqualTo(clienteSaved.getNome());
-        Assertions.assertThat(clienteUpdated.getCpf()).isNull();
-        Assertions.assertThat(clienteUpdated.getIdade()).isNegative();
-        Assertions.assertThat(clienteUpdated.getEndereco()).isNull();
+        Assertions.assertThat(clienteUpdated.getCpf()).isEqualTo(clienteSaved.getCpf());
+        Assertions.assertThat(clienteUpdated.getIdade()).isEqualTo(clienteSaved.getIdade());
+        Assertions.assertThat(clienteUpdated.getEndereco()).isEqualTo(clienteSaved.getEndereco());
     }
 
+    @Test
+    @DisplayName("Delete, remove cliente quando der sucesso!")
+    void delete_RemovesCliente_WhenSuccessful(){
+        Cliente clienteToBeSaved = createCliente();
+        Cliente clienteSaved = this.clienteRepository.save(clienteToBeSaved);
+        this.clienteRepository.delete(clienteSaved);
+
+        Optional<Cliente> clienteOptional = this.clienteRepository.findById(clienteSaved.getId());
+        Assertions.assertThat(clienteOptional).isEmpty();
+    }
 
 
     private Cliente createCliente(){
