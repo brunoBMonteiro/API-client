@@ -17,7 +17,6 @@ import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import java.util.List;
 
@@ -28,11 +27,11 @@ import java.util.List;
 // utlizamos apena o jUnit com spring, fica mais rapido testar a aplicação
 @ExtendWith(SpringExtension.class)
 class ClienteControllerTest {
-    // @InjectMocks quando quero testar a classe em si
+    // @InjectMocks quando quero testar a classe em si, clienteController
     @InjectMocks
     private ClienteController clienteController;
 
-    // @Mock é para todas os métodos que estão sendo utilizadas dentro do ClienteService
+    // @Mock é para todas as classes que estão sendo utilizadas, injetadas dentro do ClienteService
     @Mock
     private ClienteService clienteServiceMock;
 
@@ -58,8 +57,8 @@ class ClienteControllerTest {
     @DisplayName("Listar todos, retornar lista de cliente quando der sucesso")
     void list_ReturnListOfClient_WhenSuccessful(){
         // 2 teste do comportamento
-        String expectedName = ClienteCreator.createValidClient().getNome();
-        List<Cliente> clienteList = clienteController.listAll().getBody();
+        final var expectedName = ClienteCreator.createValidClient().getNome();
+        final var clienteList = clienteController.listAll().getBody();
 
         Assertions.assertThat(clienteList)
                         .isNotNull()
@@ -72,8 +71,8 @@ class ClienteControllerTest {
     @Test
     @DisplayName("findById returns cliente when successful")
     void findById_ReturnCliente_WhenSuccessful(){
-        Long expectedId = ClienteCreator.createValidClient().getId();
-        Cliente cliente = clienteController.findById(1).getBody();
+        final var expectedId = ClienteCreator.createValidClient().getId();
+        final var cliente = clienteController.findById(1).getBody();
 
         Assertions.assertThat(cliente).isNotNull();
         Assertions.assertThat(cliente.getId())
@@ -84,7 +83,7 @@ class ClienteControllerTest {
     @Test
     @DisplayName("Salva cliente retorno quando der sucesso")
     void save_ReturnCliente_WhenSuccessful() {
-        Cliente cliente = clienteController.save(ClientePostRequestBodyCreator.createClientePostRequestBody())
+        final var cliente = clienteController.save(ClientePostRequestBodyCreator.createClientePostRequestBody())
                 .getBody();
         Assertions.assertThat(cliente).isNotNull().isEqualTo(ClienteCreator.createValidClient());
     }
@@ -92,7 +91,7 @@ class ClienteControllerTest {
     @Test
     @DisplayName("Atualiza cliente quando der sucesso")
     void replace_UpdateCliente_WhenSuccessful(){
-        ResponseEntity<Void> entity = clienteController.replace(ClientePutRequestBodyCreator
+        final var entity = clienteController.replace(ClientePutRequestBodyCreator
                 .createClientePutRequestBody());
         Assertions.assertThat(entity).isNotNull();
         Assertions.assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.ACCEPTED);
@@ -101,7 +100,7 @@ class ClienteControllerTest {
     @Test
     @DisplayName("Deleta cliente quando der sucesso")
     void delete_RemoveCliente_WhenSuccessful(){
-        ResponseEntity<Void> entity = clienteController.deleteClientById(1);
+        final var entity = clienteController.deleteClientById(1);
 
         Assertions.assertThat(entity).isNotNull();
         Assertions.assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
