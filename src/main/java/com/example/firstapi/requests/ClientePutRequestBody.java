@@ -1,5 +1,6 @@
 package com.example.firstapi.requests;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
@@ -10,6 +11,7 @@ import javax.validation.constraints.NotNull;
 // diferentes componentes de um sistema, diferentes instâncias ou
 // processos de um sistema distribuído ou diferentes sistemas via serialização.
 @Data
+@Builder
 public class ClientePutRequestBody {
     @NotBlank(message = "Coloque o id do cliente a ser alterado")
     private Long id;

@@ -41,7 +41,6 @@ class ClienteRepositoryTest {
     void save_UpdatesCliente_WhenSuccessful(){
         Cliente clienteToBeSaved = ClienteCreator.createClienteToBeSaved();
         Cliente clienteSaved = this.clienteRepository.save(clienteToBeSaved);
-        clienteSaved.setNome("Pedro");
         Cliente clienteUpdated = this.clienteRepository.save(clienteSaved);
 
 
