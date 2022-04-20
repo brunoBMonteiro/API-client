@@ -1,6 +1,7 @@
 package com.example.firstapi.repository;
 
 import com.example.firstapi.model.Cliente;
+import com.example.firstapi.util.ClienteCreator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -24,7 +25,7 @@ class ClienteRepositoryTest {
     @DisplayName("Salva cliente persistido, quando der sucesso!")
     void save_PersistCliente_WhenSuccessful(){
 
-        Cliente clienteToBeSaved = createCliente();
+        Cliente clienteToBeSaved = ClienteCreator.createClienteToBeSaved();
         Cliente savedClient =  this.clienteRepository.save(clienteToBeSaved);
 
         // Verifique que cliente salvo
@@ -38,14 +39,14 @@ class ClienteRepositoryTest {
     @Test
     @DisplayName("Salva clientes atualizados quando der sucesso!")
     void save_UpdatesCliente_WhenSuccessful(){
-        Cliente clienteToBeSaved = createCliente();
+        Cliente clienteToBeSaved = ClienteCreator.createClienteToBeSaved();
         Cliente clienteSaved = this.clienteRepository.save(clienteToBeSaved);
         clienteSaved.setNome("Pedro");
         Cliente clienteUpdated = this.clienteRepository.save(clienteSaved);
 
 
         Assertions.assertThat(clienteUpdated).isNotNull();
-        Assertions.assertThat(clienteSaved.getNome()).isEqualTo(clienteSaved.getNome());
+        Assertions.assertThat(clienteUpdated.getNome()).isEqualTo(clienteSaved.getNome());
         Assertions.assertThat(clienteUpdated.getCpf()).isEqualTo(clienteSaved.getCpf());
         Assertions.assertThat(clienteUpdated.getIdade()).isEqualTo(clienteSaved.getIdade());
         Assertions.assertThat(clienteUpdated.getEndereco()).isEqualTo(clienteSaved.getEndereco());
@@ -54,7 +55,7 @@ class ClienteRepositoryTest {
     @Test
     @DisplayName("Delete, remove cliente quando der sucesso!")
     void delete_RemovesCliente_WhenSuccessful(){
-        Cliente clienteToBeSaved = createCliente();
+        Cliente clienteToBeSaved = ClienteCreator.createClienteToBeSaved();
         Cliente clienteSaved = this.clienteRepository.save(clienteToBeSaved);
         this.clienteRepository.delete(clienteSaved);
 
