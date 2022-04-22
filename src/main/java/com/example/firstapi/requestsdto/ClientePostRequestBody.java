@@ -1,4 +1,4 @@
-package com.example.firstapi.requests;
+package com.example.firstapi.requestsdto;
 
 import lombok.Builder;
 import lombok.Data;

@@ -1,6 +1,6 @@
 package com.example.firstapi.util;
 
-import com.example.firstapi.requests.ClientePutRequestBody;
+import com.example.firstapi.requestsdto.ClientePutRequestBody;
 
 public class ClientePutRequestBodyCreator {
     public static ClientePutRequestBody createClientePutRequestBody(){

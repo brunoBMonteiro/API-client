@@ -1,8 +1,8 @@
 package com.example.firstapi.mapper;
 
 import com.example.firstapi.model.Cliente;
-import com.example.firstapi.requests.ClientePostRequestBody;
-import com.example.firstapi.requests.ClientePutRequestBody;
+import com.example.firstapi.requestsdto.ClientePostRequestBody;
+import com.example.firstapi.requestsdto.ClientePutRequestBody;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

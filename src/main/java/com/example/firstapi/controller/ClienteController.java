@@ -1,8 +1,8 @@
 package com.example.firstapi.controller;
 
 import com.example.firstapi.model.Cliente;
-import com.example.firstapi.requests.ClientePostRequestBody;
-import com.example.firstapi.requests.ClientePutRequestBody;
+import com.example.firstapi.requestsdto.ClientePostRequestBody;
+import com.example.firstapi.requestsdto.ClientePutRequestBody;
 import com.example.firstapi.service.ClienteService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
