@@ -8,7 +8,6 @@ import com.example.firstapi.util.ClienteCreator;
 import com.example.firstapi.util.ClientePostRequestBodyCreator;
 import com.example.firstapi.util.ClientePutRequestBodyCreator;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -32,29 +31,16 @@ class ClienteControllerTest {
     @Mock
     private ClienteService clienteServiceMock;
 
-    @BeforeEach
-    void setUp(){
-        // 1- Criando comportamento para o mockito e no passo 2- o teste
-        Mockito.when(clienteServiceMock.listAll())
-                .thenReturn(List.of(ClienteCreator.createValidClient()));
-
-        Mockito.when(clienteServiceMock.findByIdOrThrowBadRequestException(ArgumentMatchers.anyLong()))
-                .thenReturn(ClienteCreator.createValidClient());
-
-        Mockito.when(clienteServiceMock.save(ArgumentMatchers.any(ClientePostRequestBody.class)))
-                .thenReturn(ClienteCreator.createValidClient());
-
-        //Quando retorna void, usa "não faça nada", "quando"
-        Mockito.doNothing().when(clienteServiceMock).replace(ArgumentMatchers.any(ClientePutRequestBody.class));
-
-        Mockito.doNothing().when(clienteServiceMock).delete(ArgumentMatchers.anyLong());
-    }
 
     @Test
     @DisplayName("Listar todos, retornar lista de cliente quando der sucesso")
     void list_ReturnListOfClient_WhenSuccessful(){
         // 2 teste do comportamento
         final var expectedName = ClienteCreator.createValidClient();
+
+        Mockito.when(clienteServiceMock.listAll())
+                .thenReturn(List.of(ClienteCreator.createValidClient()));
+
         final var clienteList = clienteController.listAll().getBody();
 
         Assertions.assertThat(clienteList)
@@ -71,6 +57,10 @@ class ClienteControllerTest {
     @DisplayName("Procura por id,  retorna cliente quando der sucesso")
     void findById_ReturnCliente_WhenSuccessful(){
         final var expectedId = ClienteCreator.createValidClient().getId();
+
+        Mockito.when(clienteServiceMock.findByIdOrThrowBadRequestException(ArgumentMatchers.anyLong()))
+                .thenReturn(ClienteCreator.createValidClient());
+
         final var cliente = clienteController.findById(1).getBody();
 
         Assertions.assertThat(cliente).isNotNull();
@@ -84,8 +74,12 @@ class ClienteControllerTest {
     @Test
     @DisplayName("Salva, retorna cliente quando der sucesso")
     void save_ReturnCliente_WhenSuccessful() {
+        Mockito.when(clienteServiceMock.save(ArgumentMatchers.any(ClientePostRequestBody.class)))
+                .thenReturn(ClienteCreator.createValidClient());
+
         final var cliente = clienteController.save(ClientePostRequestBodyCreator.createClientePostRequestBody())
                 .getBody();
+
         Assertions.assertThat(cliente).isNotNull().isEqualTo(ClienteCreator.createValidClient());
     }
 
@@ -94,6 +88,9 @@ class ClienteControllerTest {
     void replace_UpdateCliente_WhenSuccessful(){
         final var entity = clienteController.replace(ClientePutRequestBodyCreator
                 .createClientePutRequestBody());
+
+        Mockito.doNothing().when(clienteServiceMock).replace(ArgumentMatchers.any(ClientePutRequestBody.class));
+
         Assertions.assertThat(entity).isNotNull();
         Assertions.assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.ACCEPTED);
     }
@@ -102,6 +99,8 @@ class ClienteControllerTest {
     @DisplayName("Deleta, remove cliente quando der sucesso")
     void delete_RemoveCliente_WhenSuccessful(){
         final var clientById = clienteController.deleteClientById(1);
+
+        Mockito.doNothing().when(clienteServiceMock).delete(ArgumentMatchers.anyLong());
 
         Assertions.assertThat(clientById).isNotNull();
         Assertions.assertThat(clientById.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
