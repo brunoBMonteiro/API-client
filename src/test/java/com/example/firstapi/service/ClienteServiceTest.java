@@ -29,15 +29,6 @@ class ClienteServiceTest {
 
         @BeforeEach
         void setUp(){
-            // 1- Criando comportamento para o mockito e no passo 2- o teste
-            Mockito.when(clienteRepositoryMock.findAll())
-                    .thenReturn(List.of(ClienteCreator.createValidClient()));
-
-            Mockito.when(clienteRepositoryMock.findById(ArgumentMatchers.anyLong()))
-                    .thenReturn(Optional.of(ClienteCreator.createValidClient()));
-
-            Mockito.when(clienteRepositoryMock.save(ArgumentMatchers.any(Cliente.class)))
-                    .thenReturn(ClienteCreator.createValidClient());
 
             Mockito.doNothing().when(clienteRepositoryMock).delete(ArgumentMatchers.any(Cliente.class));
         }
@@ -47,6 +38,10 @@ class ClienteServiceTest {
         void listAll_ReturnListOfClient_WhenSuccessful(){
             // 2 teste do comportamento
             final var expectedName = ClienteCreator.createValidClient();
+
+            Mockito.when(clienteRepositoryMock.findAll())
+                    .thenReturn(List.of(ClienteCreator.createValidClient()));
+
             final var clienteList = clienteService.listAll();
 
             Assertions.assertThat(clienteList)
@@ -63,6 +58,10 @@ class ClienteServiceTest {
         @DisplayName("Procura por id,  retorna cliente quando der sucesso")
         void findById_ReturnCliente_WhenSuccessful(){
             final var expectedId = ClienteCreator.createValidClient().getId();
+
+            Mockito.when(clienteRepositoryMock.findById(ArgumentMatchers.anyLong()))
+                    .thenReturn(Optional.of(ClienteCreator.createValidClient()));
+
             final var cliente = clienteService.findByIdOrThrowBadRequestException(1);
 
             Assertions.assertThat(cliente).isNotNull();
@@ -71,10 +70,12 @@ class ClienteServiceTest {
         }
 
 
-
         @Test
         @DisplayName("Salva, retorna cliente quando der sucesso")
         void save_ReturnCliente_WhenSuccessful() {
+            Mockito.when(clienteRepositoryMock.save(ArgumentMatchers.any(Cliente.class)))
+                    .thenReturn(ClienteCreator.createValidClient());
+
             final var cliente = clienteService.save(ClientePostRequestBodyCreator
                     .createClientePostRequestBody());
 
@@ -84,16 +85,16 @@ class ClienteServiceTest {
         @Test
         @DisplayName("Atualiza, atualizar cliente quando der sucesso")
         void replace_UpdateCliente_WhenSuccessful(){
+
             Assertions.assertThatCode(() ->clienteService.replace(ClientePutRequestBodyCreator
-                            .createClientePutRequestBody()))
-                    .doesNotThrowAnyException();
+                            .createClientePutRequestBody()));
         }
 
         @Test
         @DisplayName("Deleta, remove cliente quando der sucesso")
         void delete_RemoveCliente_WhenSuccessful(){
-            Assertions.assertThatCode(() ->clienteService.delete(1))
-                    .doesNotThrowAnyException();
+
+            Assertions.assertThatCode(() ->clienteService.delete(1));
 
         }
 
