@@ -6,7 +6,6 @@ import com.example.firstapi.util.ClienteCreator;
 import com.example.firstapi.util.ClientePostRequestBodyCreator;
 import com.example.firstapi.util.ClientePutRequestBodyCreator;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -27,11 +26,6 @@ class ClienteServiceTest {
         @Mock
         private ClienteRepository clienteRepositoryMock;
 
-        @BeforeEach
-        void setUp(){
-
-            Mockito.doNothing().when(clienteRepositoryMock).delete(ArgumentMatchers.any(Cliente.class));
-        }
 
         @Test
         @DisplayName("Listar todos, retornar lista de cliente quando der sucesso")
@@ -62,7 +56,7 @@ class ClienteServiceTest {
             Mockito.when(clienteRepositoryMock.findById(ArgumentMatchers.anyLong()))
                     .thenReturn(Optional.of(ClienteCreator.createValidClient()));
 
-            final var cliente = clienteService.findByIdOrThrowBadRequestException(1);
+            final var cliente = clienteService.findById(1L);
 
             Assertions.assertThat(cliente).isNotNull();
             Assertions.assertThat(cliente.getId()).isNotNull().isEqualTo(expectedId);
@@ -87,14 +81,16 @@ class ClienteServiceTest {
         void replace_UpdateCliente_WhenSuccessful(){
 
             Assertions.assertThatCode(() ->clienteService.replace(ClientePutRequestBodyCreator
-                            .createClientePutRequestBody()));
+                            .createClientePutRequestBody())).doesNotThrowAnyException();
         }
 
         @Test
         @DisplayName("Deleta, remove cliente quando der sucesso")
         void delete_RemoveCliente_WhenSuccessful(){
+            Mockito.doNothing().when(clienteRepositoryMock).delete(ArgumentMatchers.any(Cliente.class));
 
-            Assertions.assertThatCode(() ->clienteService.delete(1));
+            Assertions.assertThatCode(() -> clienteService.delete(1))
+                    .doesNotThrowAnyException();
 
         }
 

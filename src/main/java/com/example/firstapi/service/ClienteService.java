@@ -14,41 +14,39 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class ClienteService {
-
     private final ClienteRepository clienteRepository;
 
-    public List<Cliente> listAll(){
+    public List<Cliente> listAll() {
         return clienteRepository.findAll();
     }
 
-    public Cliente findByIdOrThrowBadRequestException(long id){
+    public Cliente findById(Long id) {
         return clienteRepository.findById(id)
                 .orElseThrow(() -> new NotFoundRequestException("Cliente não encontrado!"));
     }
 
-    //
     @Transactional(rollbackFor = Exception.class)
-    public Cliente save(ClientePostRequestBody clientePostRequestBody){
+    public Cliente save(ClientePostRequestBody clientePostRequestBody) {
         // Exemplo de Builder, forma de instanciar objeto
         return clienteRepository.save(Cliente.builder()
                 .nome(clientePostRequestBody.getNome())
-                        .cpf(clientePostRequestBody.getCpf())
-                        .idade(clientePostRequestBody.getIdade())
-                        .endereco(clientePostRequestBody.getEndereco())
+                .cpf(clientePostRequestBody.getCpf())
+                .idade(clientePostRequestBody.getIdade())
+                .endereco(clientePostRequestBody.getEndereco())
                 .build());
 
         //return clienteRepository.save(ClienteMapper.INSTANCE.toCliente(clientePostRequestBody));
 
     }
 
-    public void delete(long id){
-        clienteRepository.delete(findByIdOrThrowBadRequestException(id));
+    public void delete(long id) {
+        clienteRepository.delete(findById(id));
     }
 
 
-    public void replace(ClientePutRequestBody clientePutRequestBody){
+    public void replace(ClientePutRequestBody clientePutRequestBody) {
         // Exemplo de Builder, forma de instanciar objeto
-        Cliente savedCliente = findByIdOrThrowBadRequestException(clientePutRequestBody.getId());
+        Cliente savedCliente = findById(clientePutRequestBody.getId());
         Cliente cliente = Cliente.builder()
                 .id(savedCliente.getId())
                 .nome(clientePutRequestBody.getNome())

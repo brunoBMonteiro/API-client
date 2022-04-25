@@ -55,6 +55,15 @@ public class ClienteControllerIntegrationTest {
         Assertions.assertThat(clientes.get(0).getNome()).isEqualTo(expectedName);
     }
 
+    /*
+    @Test
+    @DisplayName("Salva, retorna cliente quando der sucesso")
+    void save_ReturnCliente_WhenSuccessful() {
+        final var cliente = clienteRepository.save(ClientePostRequestBodyCreator.createClientePostRequestBody())
+                .getBody();
+        Assertions.assertThat(cliente).isNotNull().isEqualTo(ClienteCreator.createValidClient());
+    }
+
 
     @Test
     @DisplayName("Procura por id,  retorna cliente quando der sucesso")
@@ -65,13 +74,6 @@ public class ClienteControllerIntegrationTest {
 
     }
 
-    @Test
-    @DisplayName("Salva, retorna cliente quando der sucesso")
-    void save_ReturnCliente_WhenSuccessful() {
-        final var cliente = clienteRepository.save(ClientePostRequestBodyCreator.createClientePostRequestBody())
-                .getBody();
-        Assertions.assertThat(cliente).isNotNull().isEqualTo(ClienteCreator.createValidClient());
-    }
 
     @Test
     @DisplayName("Atualiza, atualizar cliente quando der sucesso")
@@ -90,5 +92,6 @@ public class ClienteControllerIntegrationTest {
         Assertions.assertThat(clientById).isNotNull();
         Assertions.assertThat(clientById.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
     }
+     */
 
 }

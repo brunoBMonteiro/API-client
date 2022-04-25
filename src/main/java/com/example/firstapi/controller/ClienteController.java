@@ -59,7 +59,7 @@ public class ClienteController {
     })
    @GetMapping(path = "/{id}")
    public ResponseEntity<Cliente> findById(@PathVariable long id){
-       return ResponseEntity.ok(clienteService.findByIdOrThrowBadRequestException(id));
+       return ResponseEntity.ok(clienteService.findById(id));
 
    }
 

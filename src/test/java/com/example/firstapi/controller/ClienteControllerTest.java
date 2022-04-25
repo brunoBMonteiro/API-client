@@ -1,6 +1,5 @@
 package com.example.firstapi.controller;
 
-
 import com.example.firstapi.requestsdto.ClientePostRequestBody;
 import com.example.firstapi.requestsdto.ClientePutRequestBody;
 import com.example.firstapi.service.ClienteService;
@@ -32,6 +31,7 @@ class ClienteControllerTest {
     private ClienteService clienteServiceMock;
 
 
+    //TO-DO teste contrato
     @Test
     @DisplayName("Listar todos, retornar lista de cliente quando der sucesso")
     void list_ReturnListOfClient_WhenSuccessful(){
@@ -58,7 +58,7 @@ class ClienteControllerTest {
     void findById_ReturnCliente_WhenSuccessful(){
         final var expectedId = ClienteCreator.createValidClient().getId();
 
-        Mockito.when(clienteServiceMock.findByIdOrThrowBadRequestException(ArgumentMatchers.anyLong()))
+        Mockito.when(clienteServiceMock.findById(ArgumentMatchers.anyLong()))
                 .thenReturn(ClienteCreator.createValidClient());
 
         final var cliente = clienteController.findById(1).getBody();
