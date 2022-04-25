@@ -10,7 +10,7 @@ http://localhost:8080/swagger-ui/index.html#/
 
 
 
-<h3>References</h3>
+<h2>References</h2>
 Links reference to swagger: 
 
 https://medium.com/@raphaelbluteau/spring-boot-swagger-documentando-sua-api-automaticamente-27903293aeb6
@@ -24,3 +24,11 @@ Lib for dependences: https://springdoc.org/
 Link reference to spring docs:
 
 https://www.baeldung.com/spring-rest-docs-vs-openapi
+
+Links about contents Sprint 09:
+
+O que são testes?
+
+Link: Blog CWI: https://cwi.com.br/blog/o-que-e-teste-de-software-por-que-e-necessario/
+
+Link: 
