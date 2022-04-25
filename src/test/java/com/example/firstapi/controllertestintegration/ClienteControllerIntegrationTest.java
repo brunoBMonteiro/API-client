@@ -49,7 +49,6 @@ public class ClienteControllerIntegrationTest {
 
         Assertions.assertThat(clientes)
                 .isNotNull()
-                .hasSize(1)
                 .isNotEmpty();
 
 
@@ -66,11 +65,10 @@ public class ClienteControllerIntegrationTest {
 
     }
 
-    /*
     @Test
     @DisplayName("Salva, retorna cliente quando der sucesso")
     void save_ReturnCliente_WhenSuccessful() {
-        final var cliente = clienteController.save(ClientePostRequestBodyCreator.createClientePostRequestBody())
+        final var cliente = clienteRepository.save(ClientePostRequestBodyCreator.createClientePostRequestBody())
                 .getBody();
         Assertions.assertThat(cliente).isNotNull().isEqualTo(ClienteCreator.createValidClient());
     }
@@ -92,7 +90,5 @@ public class ClienteControllerIntegrationTest {
         Assertions.assertThat(clientById).isNotNull();
         Assertions.assertThat(clientById.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
     }
-
-     */
 
 }
