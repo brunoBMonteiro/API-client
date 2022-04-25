@@ -31,4 +31,8 @@ O que são testes?
 
 Link: Blog CWI: https://cwi.com.br/blog/o-que-e-teste-de-software-por-que-e-necessario/
 
-Link: 
+<h3>Sonarqube and Jacoco</h3>
+
+Link: for Jacoco: http://localhost:63342/firstapi/build/reports/jacoco/test/html/index.html?_ijt=73gh9s33etadej609rg5tjbbu0&_ij_reload=RELOAD_ON_SAVE
+
+Link for Sonarqube: http://localhost:9000/projects
