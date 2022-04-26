@@ -21,7 +21,7 @@ class ClienteRepositoryTest {
 
     @Test
     @DisplayName("Salva cliente persistido, quando der sucesso!")
-    void save_PersistCliente_WhenSuccessful(){
+    void savePersistClienteWhenSuccessful(){
 
         Cliente clienteToBeSaved = ClienteCreator.createClienteToBeSaved();
         Cliente savedClient =  this.clienteRepository.save(clienteToBeSaved);
@@ -36,7 +36,7 @@ class ClienteRepositoryTest {
 
     @Test
     @DisplayName("Salva clientes atualizados quando der sucesso!")
-    void save_UpdatesCliente_WhenSuccessful(){
+    void saveUpdatesClienteWhenSuccessful(){
         Cliente clienteToBeSaved = ClienteCreator.createClienteToBeSaved();
         Cliente clienteSaved = this.clienteRepository.save(clienteToBeSaved);
         Cliente clienteUpdated = this.clienteRepository.save(clienteSaved);
@@ -51,7 +51,7 @@ class ClienteRepositoryTest {
 
     @Test
     @DisplayName("Delete, remove cliente quando der sucesso!")
-    void delete_RemovesCliente_WhenSuccessful(){
+    void deleteRemovesClienteWhenSuccessful(){
         Cliente clienteToBeSaved = ClienteCreator.createClienteToBeSaved();
         Cliente clienteSaved = this.clienteRepository.save(clienteToBeSaved);
         this.clienteRepository.delete(clienteSaved);

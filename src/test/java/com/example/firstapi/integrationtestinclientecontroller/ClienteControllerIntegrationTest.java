@@ -1,20 +1,11 @@
-package com.example.firstapi.controllertestintegration;
+package com.example.firstapi.integrationtestinclientecontroller;
 
 import com.example.firstapi.model.Cliente;
 import com.example.firstapi.repository.ClienteRepository;
-import com.example.firstapi.requestsdto.ClientePostRequestBody;
-import com.example.firstapi.requestsdto.ClientePutRequestBody;
 import com.example.firstapi.util.ClienteCreator;
-import com.example.firstapi.util.ClientePostRequestBodyCreator;
-import com.example.firstapi.util.ClientePutRequestBodyCreator;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentMatchers;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -38,7 +29,7 @@ public class ClienteControllerIntegrationTest {
 
     @Test
     @DisplayName("Listar todos, retornar lista de cliente quando der sucesso")
-    void list_ReturnListOfClient_WhenSuccessful(){
+    void listAllReturnListOfClientWhenSuccessful(){
         // 2 teste do comportamento
         Cliente savedCliente = clienteRepository.save(ClienteCreator.createClienteToBeSaved());
         String expectedName = savedCliente.getNome();
@@ -92,6 +83,5 @@ public class ClienteControllerIntegrationTest {
         Assertions.assertThat(clientById).isNotNull();
         Assertions.assertThat(clientById.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
     }
-     */
-
+*/
 }

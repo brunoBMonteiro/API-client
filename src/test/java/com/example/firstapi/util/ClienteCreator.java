@@ -2,6 +2,7 @@ package com.example.firstapi.util;
 
 import com.example.firstapi.model.Cliente;
 
+//Stubs
 // Criando objetos que serão utilizados nas classes de teste
 public class ClienteCreator {
 
@@ -33,4 +34,5 @@ public class ClienteCreator {
                 .endereco("Avenida Rodolfo Muller")
                 .build();
     }
+
 }
