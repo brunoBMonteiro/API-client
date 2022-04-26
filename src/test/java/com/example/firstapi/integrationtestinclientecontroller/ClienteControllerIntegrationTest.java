@@ -10,22 +10,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 
 import java.util.List;
 
+// Define porta aleatória toda vez que os teste forem executados
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@AutoConfigureTestDatabase  //Configuração de banco utiliza a configuração em memória
-public class ClienteControllerIntegrationTest {
+@AutoConfigureTestDatabase  //Configuração de banco, utiliza valor em  memória
+class ClienteControllerIntegrationTest {
+    //
     @Autowired
     private TestRestTemplate testRestTemplate;
     @Autowired
     private ClienteRepository clienteRepository;
 
-    @LocalServerPort
-    private int port;
 
     @Test
     @DisplayName("Listar todos, retornar lista de cliente quando der sucesso")
@@ -46,6 +45,18 @@ public class ClienteControllerIntegrationTest {
         Assertions.assertThat(clientes.get(0).getNome()).isEqualTo(expectedName);
     }
 
+    @Test
+    @DisplayName("Procura por id,  retorna cliente quando der sucesso")
+    void findByIdReturnClienteWhenSuccessful(){
+        Cliente savedCliente = clienteRepository.save(ClienteCreator.createClienteToBeSaved());
+        Long expectedId = savedCliente.getId();
+
+        Cliente cliente = testRestTemplate.getForObject("/clientes/{id}", Cliente.class, expectedId);
+
+        Assertions.assertThat(cliente).isNotNull();
+        Assertions.assertThat(cliente.getId()).isNotNull().isEqualTo(expectedId);
+    }
+
     /*
     @Test
     @DisplayName("Salva, retorna cliente quando der sucesso")
@@ -54,17 +65,6 @@ public class ClienteControllerIntegrationTest {
                 .getBody();
         Assertions.assertThat(cliente).isNotNull().isEqualTo(ClienteCreator.createValidClient());
     }
-
-
-    @Test
-    @DisplayName("Procura por id,  retorna cliente quando der sucesso")
-    void findById_ReturnCliente_WhenSuccessful(){
-        Cliente savedCliente = clienteRepository.save(ClienteCreator.createClienteToBeSaved());
-        Long expectedId = savedCliente.getId();
-
-
-    }
-
 
     @Test
     @DisplayName("Atualiza, atualizar cliente quando der sucesso")
@@ -83,5 +83,5 @@ public class ClienteControllerIntegrationTest {
         Assertions.assertThat(clientById).isNotNull();
         Assertions.assertThat(clientById.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
     }
-*/
+    */
 }

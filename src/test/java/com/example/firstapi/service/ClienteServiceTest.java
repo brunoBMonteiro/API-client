@@ -4,7 +4,6 @@ import com.example.firstapi.model.Cliente;
 import com.example.firstapi.repository.ClienteRepository;
 import com.example.firstapi.util.ClienteCreator;
 import com.example.firstapi.util.ClientePostRequestBodyCreator;
-import com.example.firstapi.util.ClientePutRequestBodyCreator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,6 +13,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
 import java.util.List;
 import java.util.Optional;
 
