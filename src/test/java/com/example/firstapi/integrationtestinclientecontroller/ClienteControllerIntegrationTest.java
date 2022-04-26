@@ -2,7 +2,9 @@ package com.example.firstapi.integrationtestinclientecontroller;
 
 import com.example.firstapi.model.Cliente;
 import com.example.firstapi.repository.ClienteRepository;
+import com.example.firstapi.requestsdto.ClientePostRequestBody;
 import com.example.firstapi.util.ClienteCreator;
+import com.example.firstapi.util.ClientePostRequestBodyCreator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,7 +13,10 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -57,31 +62,29 @@ class ClienteControllerIntegrationTest {
         Assertions.assertThat(cliente.getId()).isNotNull().isEqualTo(expectedId);
     }
 
-    /*
     @Test
     @DisplayName("Salva, retorna cliente quando der sucesso")
-    void save_ReturnCliente_WhenSuccessful() {
-        final var cliente = clienteRepository.save(ClientePostRequestBodyCreator.createClientePostRequestBody())
-                .getBody();
-        Assertions.assertThat(cliente).isNotNull().isEqualTo(ClienteCreator.createValidClient());
-    }
+    void saveReturnClienteWhenSuccessful() {
+        ClientePostRequestBody clientePostRequestBody = ClientePostRequestBodyCreator.createClientePostRequestBody();
 
-    @Test
-    @DisplayName("Atualiza, atualizar cliente quando der sucesso")
-    void replace_UpdateCliente_WhenSuccessful(){
-        final var entity = clienteController.replace(ClientePutRequestBodyCreator
-                .createClientePutRequestBody());
-        Assertions.assertThat(entity).isNotNull();
-        Assertions.assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.ACCEPTED);
+        ResponseEntity<Cliente> clienteResponseEntity = testRestTemplate.postForEntity("/clientes", clientePostRequestBody, Cliente.class);
+
+        Assertions.assertThat(clienteResponseEntity).isNotNull();
+        Assertions.assertThat(clienteResponseEntity.getStatusCode()).isEqualTo(HttpStatus.CREATED);
+        Assertions.assertThat(clienteResponseEntity.getBody()).isNotNull();
+        Assertions.assertThat(clienteResponseEntity.getBody().getId()).isNotNull();
     }
 
     @Test
     @DisplayName("Deleta, remove cliente quando der sucesso")
-    void delete_RemoveCliente_WhenSuccessful(){
-        final var clientById = clienteController.deleteClientById(1);
+    void deleteRemoveClienteWhenSuccessful(){
+        final var savedCliente = clienteRepository.save(ClienteCreator.createClienteToBeSaved());
 
-        Assertions.assertThat(clientById).isNotNull();
-        Assertions.assertThat(clientById.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
+        ResponseEntity<Void> clienteResponseEntity = testRestTemplate.exchange("/clientes/{id}",
+                HttpMethod.DELETE, null, Void.class, savedCliente.getId());
+
+        Assertions.assertThat(clienteResponseEntity).isNotNull();
+        Assertions.assertThat(clienteResponseEntity.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
     }
-    */
+
 }

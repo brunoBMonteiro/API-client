@@ -29,7 +29,7 @@ class ClienteServiceTest {
 
     @Test
     @DisplayName("Listar todos, retornar lista de cliente quando der sucesso")
-    void listAll_ReturnListOfClient_WhenSuccessful(){
+    void listAllReturnListOfClientWhenSuccessful(){
         // 2 teste do comportamento
         final var expectedName = ClienteCreator.createValidClient();
 
@@ -50,7 +50,7 @@ class ClienteServiceTest {
 
     @Test
     @DisplayName("Procura por id,  retorna cliente quando der sucesso")
-    void findById_ReturnCliente_WhenSuccessful(){
+    void findByIdReturnClienteWhenSuccessful(){
         final var expectedId = ClienteCreator.createValidClient().getId();
 
         Mockito.when(clienteRepositoryMock.findById(ArgumentMatchers.anyLong()))
@@ -66,7 +66,7 @@ class ClienteServiceTest {
 
     @Test
     @DisplayName("Salva, retorna cliente quando der sucesso")
-    void save_ReturnCliente_WhenSuccessful() {
+    void saveReturnClienteWhenSuccessful() {
         Mockito.when(clienteRepositoryMock.save(ArgumentMatchers.any(Cliente.class)))
                 .thenReturn(ClienteCreator.createValidClient());
 
@@ -74,23 +74,6 @@ class ClienteServiceTest {
                 .createClientePostRequestBody());
 
         Assertions.assertThat(cliente).isNotNull().isEqualTo(ClienteCreator.createValidClient());
-    }
-
-    // Refatorar esses replace e delete
-    @Test
-    @DisplayName("Atualiza, atualizar cliente quando der sucesso")
-    void replace_UpdateCliente_WhenSuccessful(){
-        final var clienteExpected = ClienteCreator.createValidClient();
-
-        Assertions.assertThat(clienteService.equals(clienteExpected));
-    }
-
-    @Test
-    @DisplayName("Deleta, remove cliente quando der sucesso")
-    void delete_RemoveCliente_WhenSuccessful(){
-        Mockito.doNothing().when(clienteRepositoryMock).delete(ArgumentMatchers.any(Cliente.class));
-
-        Assertions.assertThatCode(() -> clienteService.delete(1));
     }
 
 }

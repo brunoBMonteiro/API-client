@@ -10,8 +10,8 @@ import org.mapstruct.factory.Mappers;
 public abstract class ClienteMapper {
     public static final ClienteMapper INSTANCE = Mappers.getMapper(ClienteMapper.class);
 
-    public abstract Cliente toCliente(ClientePostRequestBody clientePostRequestBody);
-    public abstract Cliente toCliente(ClientePutRequestBody clientePutRequestBody);
+    public abstract Cliente cliente(ClientePostRequestBody clientePostRequestBody);
+    public abstract Cliente cliente(ClientePutRequestBody clientePutRequestBody);
 }
 
 

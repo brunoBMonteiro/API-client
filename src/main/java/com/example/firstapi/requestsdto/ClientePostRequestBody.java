@@ -1,7 +1,9 @@
 package com.example.firstapi.requestsdto;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -13,6 +15,8 @@ import javax.validation.constraints.NotNull;
 // processos de um sistema distribuído ou diferentes sistemas via serialização.
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class ClientePostRequestBody {
 
     @NotBlank(message = "Preencha o nome")
