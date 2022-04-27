@@ -27,21 +27,29 @@ https://www.baeldung.com/spring-rest-docs-vs-openapi
 
 Links about contents Sprint 09:
 
-O que são testes?
+<h2>O que são testes?</h2>
 
-Link: Blog CWI: https://cwi.com.br/blog/o-que-e-teste-de-software-por-que-e-necessario/
+Link Martin Fowler Piramide de testes : https://martinfowler.com/articles/practical-test-pyramid.html
 
-Unit tests
+Link Blog CWI: https://cwi.com.br/blog/o-que-e-teste-de-software-por-que-e-necessario/
+
+<h4>Unit tests</h4>
 
 Link: 
 
-Integration tests 
+<h4>Integration tests</h4>
 
 Link Medium: https://vanderloureiro.medium.com/teste-de-integra%C3%A7%C3%A3o-no-springboot-8b9c06356b1b
 
 Link DevMedia: https://www.devmedia.com.br/testes-de-integracao-com-java-e-junit/25662
 
+Link Blog Zup: https://www.zup.com.br/blog/testes-de-contratos-com-pact-1-conceitos
 
+<h4>Contract tests</h4>
+
+Link Blog Zup: https://www.zup.com.br/blog/testes-de-contrato
+
+Link Blog Zup Teste de contrato com explicação do teste de integração: https://www.zup.com.br/blog/testes-de-contratos-com-pact-1-conceitos
 
 <h3>Sonarqube and Jacoco</h3>
 
