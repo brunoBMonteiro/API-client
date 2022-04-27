@@ -51,6 +51,10 @@ Link Blog Zup: https://www.zup.com.br/blog/testes-de-contrato
 
 Link Blog Zup Teste de contrato com explicação do teste de integração: https://www.zup.com.br/blog/testes-de-contratos-com-pact-1-conceitos
 
+<h4>Pitest mutation test</h4>
+
+Link Docs mutation test: https://pitest.org/
+
 <h3>Sonarqube and Jacoco</h3>
 
 Link: for Jacoco: http://localhost:63342/firstapi/build/reports/jacoco/test/html/index.html?_ijt=73gh9s33etadej609rg5tjbbu0&_ij_reload=RELOAD_ON_SAVE
