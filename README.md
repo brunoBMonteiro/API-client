@@ -62,7 +62,15 @@ Link Java code geeks: https://www.javacodegeeks.com/2020/03/pit-junit-5-and-grad
 
 Link youtube channel: https://www.youtube.com/watch?v=50wS6U2IWEw
 
-<h3>Links for Sonarqube and Jacoco and pitest</h3>
+<h3>Test Doubles (Mocks, Stubs, Fakes, Spies e Dummies)</h3>
+
+Link for Test double types Medium: https://medium.com/rd-shipit/test-doubles-mocks-stubs-fakes-spies-e-dummies-a5cdafcd0daf 
+
+<h3>Jacoco</h3>
+
+Links jacoco tutorial: https://mmarcosab.medium.com/completude-de-testes-com-jacoco-em-aplica%C3%A7%C3%B5es-spring-boot-74055773cc37
+
+<h3>Links for Brownser Sonarqube and Jacoco and pitest</h3>
 
 Link: for Jacoco: http://localhost:63342/firstapi/build/reports/jacoco/test/html/index.html?_ijt=73gh9s33etadej609rg5tjbbu0&_ij_reload=RELOAD_ON_SAVE
 
