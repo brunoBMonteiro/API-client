@@ -59,9 +59,13 @@ Link MavenRepository: https://localhost:63342/firstapi/build/reports/pitest/2022
 
 Link Java code geeks: https://www.javacodegeeks.com/2020/03/pit-junit-5-and-gradle-with-just-one-extra-line-of-configuration.html
 
-<h3>Sonarqube and Jacoco</h3>
+Link youtube channel: https://www.youtube.com/watch?v=50wS6U2IWEw
+
+<h3>Links for Sonarqube and Jacoco and pitest</h3>
 
 Link: for Jacoco: http://localhost:63342/firstapi/build/reports/jacoco/test/html/index.html?_ijt=73gh9s33etadej609rg5tjbbu0&_ij_reload=RELOAD_ON_SAVE
 
 Link for Sonarqube: http://localhost:9000/projects
+
+Link for pitest: https://localhost:63342/firstapi/build/reports/pitest/202204270948/index.html?_ijt=mtka83c3b012uuvm2bm68pa389&_ij_reload=RELOAD_ON_SAVE
 
