@@ -60,3 +60,5 @@ Link Docs mutation test: https://pitest.org/
 Link: for Jacoco: http://localhost:63342/firstapi/build/reports/jacoco/test/html/index.html?_ijt=73gh9s33etadej609rg5tjbbu0&_ij_reload=RELOAD_ON_SAVE
 
 Link for Sonarqube: http://localhost:9000/projects
+
+Link for Pitest: https://localhost:63342/firstapi/build/reports/pitest/202204270948/index.html?_ijt=mtka83c3b012uuvm2bm68pa389&_ij_reload=RELOAD_ON_SAVE
