@@ -3,12 +3,9 @@
 API Project with Spring boot and some spring modules Spring web, Spring Dev Tools, Spring Data JPA, H2 database, Lombok, and 
 MapStruct framework, Hateoas, Docker, Swagger...
 
-
 <h2>URL for the Swagger:</h2>
 
 http://localhost:8080/swagger-ui/index.html#/
-
-
 
 <h2>References</h2>
 Links reference to swagger: 
@@ -29,13 +26,17 @@ Links about contents Sprint 09:
 
 <h2>O que são testes?</h2>
 
+Link Docs Microsoft sobre testes: https://docs.microsoft.com/pt-br/dotnet/architecture/modern-web-apps-azure/test-asp-net-core-mvc-apps 
+
 Link Martin Fowler Piramide de testes : https://martinfowler.com/articles/practical-test-pyramid.html
 
 Link Blog CWI: https://cwi.com.br/blog/o-que-e-teste-de-software-por-que-e-necessario/
 
 <h4>Unit tests</h4>
 
-Link: 
+Link Blog Medium: https://mmarcosab.medium.com/criando-mocks-e-escrevendo-testes-unit%C3%A1rios-com-junit-5-f54e6407bd7c
+
+Link site DevMedia: https://www.devmedia.com.br/teste-unitario-com-junit/41235
 
 <h4>Integration tests</h4>
 
