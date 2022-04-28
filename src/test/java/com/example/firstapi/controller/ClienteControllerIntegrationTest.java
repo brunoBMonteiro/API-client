@@ -21,7 +21,7 @@ import java.util.List;
 // ExtendWith
 // utlizamos apena o jUnit com spring, fica mais rapido testar a aplicação
 @ExtendWith(SpringExtension.class)
-class ClienteControllerTest {
+class ClienteControllerIntegrationTest {
     // @InjectMocks quando quero testar a classe em si, clienteController
     @InjectMocks
     private ClienteController clienteController;

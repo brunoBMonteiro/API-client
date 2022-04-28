@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Optional;
 
 @ExtendWith(SpringExtension.class)
-class ClienteServiceTest {
+class ClienteServiceIntegrationTest {
 
     // @InjectMocks quando quero testar a classe em si, clienteService
     @InjectMocks
