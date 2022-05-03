@@ -18,10 +18,10 @@ public class ClienteCreator {
     public static Cliente createValidClient(){
         return Cliente.builder()
                 .id(1L)
-                .nome("Bruno")
+                .nome("Bruno Monteiro")
+                .cpf("031.766.811-20")
                 .idade(25)
-                .cpf("255.894.321-20")
-                .endereco("Avenida Rodolfo Muller")
+                .endereco("Em algum lugar")
                 .build();
     }
 

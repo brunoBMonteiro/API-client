@@ -28,6 +28,8 @@ dependencies {
     implementation 'com.h2database:h2:2.1.210'
     implementation 'mysql:mysql-connector-java:8.0.25'
     implementation 'org.projectlombok:lombok:1.18.22'
+    implementation 'org.testng:testng:7.1.0'
+    implementation 'junit:junit:4.13.1'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
     //mapstruct
@@ -52,6 +54,10 @@ dependencies {
 
     // Pitest
     implementation 'org.pitest:pitest:1.7.5'
+
+    //mockserver
+    implementation 'org.mock-server:mockserver-client-java:5.13.2'
+    testImplementation 'org.mock-server:mockserver-junit-jupiter:5.11.2'
 }
 
 sonarqube {
@@ -101,3 +107,4 @@ jacocoTestReport {
 pitest {
     junit5PluginVersion = '0.15'
 }
+

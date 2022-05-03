@@ -1,4 +1,4 @@
-package com.example.firstapi.endtoendtestclientecontroller;
+package com.example.firstapi.integrationtestclientecontroller;
 
 import com.example.firstapi.model.Cliente;
 import com.example.firstapi.repository.ClienteRepository;
@@ -22,7 +22,7 @@ import java.util.List;
 // Define porta aleatória toda vez que os teste forem executados
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureTestDatabase  //Configuração de banco, utiliza valor em  memória
-class ClienteControllerEndToEndTest {
+class ClienteControllerIntegrationTest {
     //
     @Autowired
     private TestRestTemplate testRestTemplate;
