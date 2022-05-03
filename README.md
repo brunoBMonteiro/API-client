@@ -82,3 +82,8 @@ Link for Sonarqube: http://localhost:9000/projects
 
 Link for pitest: https://localhost:63342/firstapi/build/reports/pitest/202204270948/index.html?_ijt=mtka83c3b012uuvm2bm68pa389&_ij_reload=RELOAD_ON_SAVE
 
+<h3>ServerMock</h3>
+
+Link for wireMock: https://wiremock.org/
+
+Link for youtube references: https://www.youtube.com/watch?v=RN8qQ_you_o&t=190s
